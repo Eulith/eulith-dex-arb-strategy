@@ -13,7 +13,7 @@ Importantly, this program will lose money when it tries to execute an arb where 
 3. Configure wallet details in `config.py` (lines 26 & 27)
 4. Copy/paste your refresh token in `config.py` on line 30
 5. (optional) Set the network you wish to send transactions to, default is mainnet (line 29)
-6. Fund your wallet with USDC
+6. Fund your wallet with USDC to do the trade and ETH to pay for gas. In reality, the gas cost is much higher than the arb, so it will not execute without adjustments. For testing, you might do arbs of size $1 USDC and budget $30 in gas, then remove the gas check just to see some executions.
 7. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or older
 
 # Your Next Steps
