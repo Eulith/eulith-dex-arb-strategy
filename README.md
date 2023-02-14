@@ -34,3 +34,4 @@ Eulith TODO:
 * Add testing harness
 * .gitignore additions
 * Add better documentation & comments to master_trading_code
+* Keep funds in wallet instead of toolkit
