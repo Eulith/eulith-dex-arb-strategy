@@ -71,8 +71,6 @@ def fund_toolkit_contract_if_needed(proxy_amount: float, proxy_token,
             eth_to_weth_tx = weth.deposit_wei(int(proxy_amount*proxy_token_decimals))
             eth_to_weth_tx['from'] = wallet.address
 
-            # print(f"Proxy amount is: {proxy_amount}")
-
             rec = ew3.eth.send_transaction(eth_to_weth_tx)
             receipt = ew3.eth.wait_for_transaction_receipt(rec)
 
