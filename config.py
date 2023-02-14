@@ -8,6 +8,10 @@ from eulith_web3.kms import KmsSigner
 from eulith_web3.eulith_web3 import *
 from eulith_web3.signing import LocalSigner, construct_signing_middleware
 
+# For custody, we recommend KMS, but you can use LocalSigner for testing.
+# We also integrate with other custody solutions, i.e. Fireblocks, GnosisSafe,
+# those are not shown here (they're in the docs)
+
 # --- Uncomment if using KMS ------
 # aws_credentials_profile_name = '...'
 # key_name = '...'
@@ -19,7 +23,7 @@ from eulith_web3.signing import LocalSigner, construct_signing_middleware
 
 # ---- Choose wallet integration --
 # wallet = KmsSigner(client, formatted_key_name)
-# wallet = LocalSigner("...")
+# wallet = LocalSigner(" <Private key goes here for local signer>")
 # ---------------------------------
 
 network_url = "https://eth-main.eulithrpc.com/v0"
