@@ -13,3 +13,9 @@ This trade is not currently profitable because gas costs are far higher than the
 5. Fund your wallet with USDC
 6. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or lower
 
+
+TODO:
+* Fix gas estimation code
+* Add Google sheet logging option/file for ease of use
+* Clean up
+* .gitignore additions
