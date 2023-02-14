@@ -1,9 +1,9 @@
 # Overview
-Simple script that will create a list of token pairs where the base pair is USDC. Then find prices for that token pair across DEXs. Then perform an arb via an atomic transaction if the arb is profitable after taking gas into consideration.
+Simple script that will create a list of token pairs where the base pair is USDC. Then find prices for that token pair across DEXs. Then perform an arbitrage via an atomic transaction if the arbitrage is profitable after taking gas into consideration.
 
 Once the program iterates through the full list of token pairs and DEXs, it will terminate.
 
-This trade is not currently profitable because gas costs are far higher than the arb amount (although the arb does exist).
+This trade is not currently profitable because gas costs are far higher than the arbitrage profit (although the arb does exist).
 
 # Instructions
 1. Run `pip install -r requirements.txt`, the main library here is eulith-web3
