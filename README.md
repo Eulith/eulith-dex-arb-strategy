@@ -7,9 +7,9 @@ This trade is not currently profitable because gas costs are far higher than the
 
 # Instructions
 1. Run `pip install -r requirements.txt`, the main library here is eulith-web3
-3. Set wallet details in config.py (lines 26 & 27)
-4. Copy/paste your refresh token in config.py on line 30
-5. (optional) Set the network you wish to send transactions to, default is mainnet (line 29)
-6. Fund your wallet with USDC
-7. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or lower
+2. Set wallet details in `config.py` (lines 26 & 27)
+3. Copy/paste your refresh token in `config.py` on line 30
+4. (optional) Set the network you wish to send transactions to, default is mainnet (line 29)
+5. Fund your wallet with USDC
+6. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or lower
 
