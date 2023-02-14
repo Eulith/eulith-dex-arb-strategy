@@ -4,13 +4,6 @@ from __future__ import print_function
 
 import os.path
 
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-import datetime
-
 import boto3
 from eulith_web3.kms import KmsSigner
 
@@ -98,13 +91,10 @@ if __name__ == '__main__':
             tx = ew3.eth.send_transaction(atomic_tx)
             receipt = ew3.eth.wait_for_transaction_receipt(tx)
             print(f"!! TRANSACTION EXECUTED !!\nWith receipt: {receipt['transactionHash'].hex()}")
-           
-            mtc.write_trade_to_gsheet(receipt, spread_in_sell_token_units,
-                                        min_dex, max_dex, asset_pair[0],
-                                        asset_pair[1], gas_cost_in_sell_token)
+            # You may want to write the transaction receipt to a log file here
 
         else:
-            print(f"Transaction not executed; spread is {spread_in_sell_token_units}, gas is {gas_cost_in_sell_token}")
+            print(f"Transaction not executed; spread is {spread_in_sell_token_units}, max gas cost is {gas_cost_in_sell_token}")
             print(f"The sell_token right now is:",asset_pair[0].address)
             print(f"The buy_token right now is:",asset_pair[1].address)
       

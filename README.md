@@ -1,5 +1,5 @@
 # Overview
-Simple script that will create a list of token pairs where the base pair is USDC. Then find prices for that token pair across DEXs. Then perform an arbitrage via an atomic transaction if the arbitrage is profitable after taking gas into consideration.
+Simple script that will create a list of token pairs where the base pair is USDC. Then find prices for that token pair across DEXs. Then perform an arbitrage via an atomic transaction if the arbitrage is profitable after taking gas into consideration. The arbitrage size is 100 USDC by default.
 
 Once the program iterates through the full list of token pairs and DEXs, it will terminate.
 
@@ -8,12 +8,13 @@ This trade is not currently profitable because gas costs are far higher than the
 Importantly, this program will lose money when it tries to execute an arb where the total gas required is higher than the gas limit.
 
 # Instructions
-1. Run `pip install -r requirements.txt`, the main library here is eulith-web3
-2. Set wallet details in `config.py` (lines 26 & 27)
-3. Copy/paste your refresh token in `config.py` on line 30
-4. (optional) Set the network you wish to send transactions to, default is mainnet (line 29)
-5. Fund your wallet with USDC
-6. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or lower
+1. Update pip to latest `pip install --upgrade pip`
+2. Run `pip install -r requirements.txt`, the main library here is eulith-web3
+3. Set wallet details in `config.py` (lines 26 & 27)
+4. Copy/paste your refresh token in `config.py` on line 30
+5. (optional) Set the network you wish to send transactions to, default is mainnet (line 29)
+6. Fund your wallet with USDC
+7. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or lower
 
 # Your Next Steps
 We're providing you with the infrastructure and some foundation code to run your own strategies. Because we do not trade ourselves (it would be a conflict of interest), we haven't done the reserach and improvements required to make this code profitable - that is your job. 
@@ -38,3 +39,4 @@ This is for us to do with this code, so you know what's coming.
 * .gitignore additions
 * Add better documentation & comments to master_trading_code
 * Keep funds in wallet instead of toolkit
+* Better exception handling in master_trading...

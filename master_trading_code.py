@@ -243,15 +243,17 @@ def get_gas_usage_given_aggregator(aggregator):
 
 def get_gas_cost_in_sell_token(aggregator, max_gas_price, SELL_TOKEN, BUY_TOKEN):
     gas_usage = get_gas_usage_given_aggregator(aggregator)
+
     max_gas_price = max_gas_price / 1e18 # do this first to avoid multiplying large numbers
     gas_cost_in_eth = max_gas_price * gas_usage
     max_gas_price = max_gas_price * 1e18
 
     if SELL_TOKEN.address != "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2":
+        print(f"sell_token is not WETH")
         # need to get a price for eth and the sell token, to calculate gas in sell token
         swap_params = EulithSwapRequest(
             sell_token=SELL_TOKEN,
-            buy_token=BUY_TOKEN,
+            buy_token=weth,
             sell_amount=1.0 # value doesn't matter here
             )
 
@@ -271,7 +273,6 @@ def get_gas_cost_in_sell_token(aggregator, max_gas_price, SELL_TOKEN, BUY_TOKEN)
 
 
 if __name__ == '__main__':
+
     print("Hello World - starting program...")
     
-    print("Goodbye World - ending program...")
-
