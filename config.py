@@ -23,13 +23,16 @@ from eulith_web3.signing import LocalSigner, construct_signing_middleware
 
 # ---- Choose wallet integration --
 # wallet = KmsSigner(client, formatted_key_name)
-# wallet = LocalSigner(" <Private key goes here for local signer>")
+WALLET = LocalSigner("d1e3aea22ed3b8f5a2596a51ab41d4fee1f9ff5d050cee7d3bbf3bd7a48f451f")
 # ---------------------------------
+NETWORK_URL = "https://eth-main.eulithrpc.com/v0"
+refresh_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NksifQ.eyJzdWIiOiJyaHNlZGRpZWh1YW5nIiwiZXhwIjoxNzA4MTMyMDAzLCJzb3VyY2VfaGFzaCI6IioiLCJzY29wZSI6IkFQSVJlZnJlc2gifQ.09R02UBbSQP8f3pdvJ3O0AnlIuXE4-JWTgCDxRkzwp4KlOR-H7wl0qkrvV7o9DiiHcY2FSYtTVLPOUcI6seorBs"
 
-network_url = "https://eth-main.eulithrpc.com/v0"
-refresh_token = "..."
+
 
 # default EulithWeb3 object - TODO: improve
-ew3 = EulithWeb3(eulith_url=network_url,
+ew3 = EulithWeb3(eulith_url=NETWORK_URL,
              eulith_refresh_token=refresh_token,
-             signing_middle_ware=construct_signing_middleware(wallet))
+             signing_middle_ware=construct_signing_middleware(WALLET))
+
+
