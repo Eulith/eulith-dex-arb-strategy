@@ -8,7 +8,7 @@ This trade is not currently profitable because gas costs are far higher than the
 Importantly, this program will lose money when it tries to execute an arb where the total gas required is higher than the gas limit.
 
 # Instructions
-1. Update pip to latest if you haven't already `pip install --upgrade pip`
+1. Update pip if you haven't already `pip install --upgrade pip`
 2. Run `pip install -r requirements.txt`, the main library here that enables our service is `eulith-web3`
 3. Configure wallet details in `config.py` (lines 26 & 27)
 4. Copy/paste your refresh token in `config.py` on line 30
