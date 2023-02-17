@@ -1,20 +1,20 @@
 # Overview
-Simple script that will create a list of token pairs where the base pair is USDC. Then find prices for that token pair across DEXs. Then perform an arbitrage via an atomic transaction if the arbitrage is profitable after taking gas into consideration. The arbitrage size is 100 USDC by default.
+Simple script that will create a list of token pairs where the base pair is USDC. Iterate through the token pairs to find prices for a given token pair across DEXs. Then perform an arbitrage via an atomic transaction if the arbitrage is profitable after taking gas into consideration. The trade size is 100 USDC by default.
 
-Once the program iterates through the full list of token pairs and DEXs, it will terminate.
+Once the program iterates through the full list of token pairs, it will terminate.
 
-This trade is not currently profitable because gas costs are far higher than the arbitrage profit (although the arb does exist).
+This trade is not currently profitable because it runs on mainnet and gas costs are far higher than the arbitrage profit (although the arb does exist).
 
-Importantly, this program will lose money when it tries to execute an arb where the total gas required is higher than the gas limit.
+Importantly, this program will lose money (in theory) when it tries to execute an arb where the total gas required is higher than the gas limit. The trade will revert on-chain when it reaches the gas limit and hasn't finished executing. In practive this doesn't happen (on mainnet) because the spread is never higher than the gas cost, so no trade gets executed.
 
 # Instructions
 1. Update pip if you haven't already `pip install --upgrade pip`
 2. Run `pip install -r requirements.txt`, the main library here that enables our service is `eulith-web3`
 3. Configure wallet details in `config.py` (lines 26 & 27)
-4. Copy/paste your refresh token in `config.py` on line 30
-5. (optional) Set the network you wish to send transactions to, default is mainnet (line 29)
-6. Fund your wallet with USDC to do the trade and ETH to pay for gas. In reality, the gas cost is much higher than the arb, so it will not execute without adjustments. For testing, you might do arbs of size $1 USDC and budget $30 in gas, then remove the gas check just to see some executions.
-7. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs python -v 3.9 or older
+4. Copy/paste your refresh token in `config.py` on line 30 - you need to get the refresh token from us if you aren't already a client.
+5. (optional) Set the network you wish to send transactions to, default is mainnet (line 29). The other base URLs are in the docs.
+6. Fund your wallet with USDC to do the trade and ETH to pay for gas. In reality, the gas cost is much higher than the arb, so it will not execute without adjustments. For testing, you might do arbs of size $1 USDC and budget $30 in Eth for gas, then remove the gas check just to see some executions.
+7. Run `python3 test_small_usdc_trades.py`; keep in mind web3.py needs `python -v 3.9` or _**older**_
 
 # Your Next Steps
 Run the code and see how it works!
@@ -23,9 +23,9 @@ We're providing you with infrastructure and some foundation code to build your o
 
 Here are the areas of improvement we'd suggest looking at first:
 1) Dynamic gas pricing (or gas price predictions) - price gas accurately for each trade to balance getting filled and making a profit
-2) Better handling of gas usage limits - right now it's determined by the aggregator (see get_gas_usage_given_aggregator() in master_trading_code). A better way to do it would be to simulate the txn (for which we have an endpoint) and then cache the gas usage to asynchronously update per new block.
-3) Run on other networks (we support all EVM networks), for other token pairs (we support all ERC20 and ERC721 tokens on all EVM networks), it takes us 1 day to add another token standard, and across other DEXs
-4) Add "flash swap" with `ew3.v0.start_uni_swap` or flash loan with `ew3.v0.start_flash_loan`
+2) Better handling of gas usage limits - right now it's a constant determined by which aggregator is used (see get_gas_usage_given_aggregator() in master_trading_code). A better way to do it would be to simulate the txn (for which we have an endpoint) and then cache the gas usage to asynchronously update per new block.
+3) Run on other networks (we support all EVM networks), for other token pairs (we support all ERC20 and ERC721 tokens on all EVM networks), it takes us 1 hour to add another token standard, and across other DEXs
+4) Add a "flash swap" with `ew3.v0.start_uni_swap` or flash loan with `ew3.v0.start_flash_loan`
 5) Use our optimized uniswap integration and your own DEX integrations instead of the aggregagor to optimize gas and avoid (or reduce) swap path variance
 6) There's lots more you can do with the product, but that's where we'd look at first around improving this code / trade
 
