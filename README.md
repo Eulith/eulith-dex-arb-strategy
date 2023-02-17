@@ -5,7 +5,7 @@ Once the program iterates through the full list of token pairs, it will terminat
 
 This trade is not currently profitable because it runs on mainnet and gas costs are far higher than the arbitrage profit (although the arb does exist).
 
-Importantly, this program will lose money (in theory) when it tries to execute an arb where the total gas required is higher than the gas limit. The trade will revert on-chain when it reaches the gas limit and hasn't finished executing. In practive this doesn't happen (on mainnet) because the spread is never higher than the gas cost, so no trade gets executed.
+Importantly, this program will lose money when it tries to execute an arb where the total gas required is higher than the gas limit. The trade will revert on-chain when it reaches the gas limit and hasn't finished executing. In practice this doesn't happen (on mainnet) because the spread is never higher than the gas cost, so no trade gets executed.
 
 # Instructions
 1. Update pip if you haven't already `pip install --upgrade pip`
