@@ -8,7 +8,7 @@ import boto3
 from eulith_web3.kms import KmsSigner
 
 from eulith_web3.eulith_web3 import *
-from eulith_web3.signing import construct_signing_middleware
+from eulith_web3.signing import construct_signing_middleware, LocalSigner
 
 import config
 import master_trading_code as mtc
